@@ -11,12 +11,15 @@
   <div id = "app">
     <p>{{ message }}</p>
     <button v-on:click = "reverseMessage">メッセージ反転</button>
+    <p>現在{{ number }}回クリックされています</p>
+    <button v-on:click = "countUp">カウントアップ</button>
   </div>
   <script>
     new Vue({
       el: '#app',
       data: {
-        message: "HelloWorld!"
+        message: "HelloWorld!",
+        number: 0
       },
       methods: {
         reverseMessage: function () {
@@ -24,7 +27,10 @@
           .split('')
           .reverse()
           .join('');
-        }
+        },
+        countUp: function () {
+          this.number += 1
+        },
       }
     });
   </script>
