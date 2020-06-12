@@ -21,9 +21,13 @@
     </p>
     <p>X:{{x}}, Y:{{y}}</p>
     <a v-on:click = "notEvent" href="https://google.com">Google</a>
-    <p>アラート機能<input type="text" v-on:keyup.enter.space = "myAlert"></p>
+    <p>アラート機能(スペースかエンターでアラート)</p>
+    <P><input type="text" v-on:keyup.enter.space = "myAlert"></P>
     <input type="text" v-model = "message1">
     <h1> {{ message1 }} </h1>
+    <p>{{ counter }}</p>
+    <button @click = "counter += 1">+1</button>
+    <p>{{ lessThanThree }}</p> <!-- computedプロパティは動的 -->
   </div>
   <script>
     new Vue({
@@ -35,6 +39,7 @@
         event: 'click',
         x:0,
         y:0,
+        counter: 0,
       },
       methods: {
         reverseMessage: function () {
@@ -51,14 +56,19 @@
           this.y = event.clientY / divideNumber;
         },
         notEvent: function (event) {
-        //   event.stopPropagation () //イベントを止める propagat=伝える
-             event.preventDefault();
+          //   event.stopPropagation () //イベントを止める propagat=伝える
+          event.preventDefault();
         },
         myAlert () {
           alert('アラート!');
         }
-      }
+      },
+      computed: {
+        lessThanThree: function () {
+          return this.counter > 3 ? '3以上' : '3以下'
+        }
+      },
     });
-  </script>
+    </script>
 </body>
 </html>
