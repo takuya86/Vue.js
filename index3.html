@@ -43,12 +43,13 @@
     </ul>
 
     <ul>
-      <div v-for = "fruit in fruits">
+      <div v-for = "fruit in fruits" :key = "fruit">
         <p>{{ fruit }}</p>
           <input type="text">
       </div>
     </ul>
     <button @click = "remove">先頭を削除</button>
+    
   </div>
 
   <script>
