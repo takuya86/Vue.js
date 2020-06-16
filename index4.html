@@ -8,15 +8,19 @@
 <body>
   <script src="vue.js"></script>
 
-  <div id = "app1">
+  <!-- <div id = "app1">
     <p>{{ message }}</p>
-  </div>
+  </div> -->
 
-  <div id = "app2">
+  <div id = "app">
     <p>{{ message }}</p>
     <p>{{ name }}</p>
+    <p>{{ myData }}</p>
     <button @click = "name = 'ボタンから変更'">変更</button>
   </div>
+
+  <div id="app2"></div>
+  <div id="app3"></div>
 
   <script>
 
@@ -25,22 +29,47 @@
       name: 'かわしぃ'
     }
 
-    var vm1 = new Vue ({
-      el: '#app',
+    var vm = new Vue ({
+      //el: '#app',
       data: data,
       computed: {
         myData: function () {
           return this.$data;
         }
-      }
+      },
+
       //{
         // message: 'こんにちは',  //プロパティ毎にリアクティブシステムがつく
         // name: 'かわしぃ',  //getterとseterがつく
       //}
     })
 
-    console.log(data === vm.$data);
-    console.log(vm)
+    vm.$mount('#app') //elプロパティに置き換えることができる
+
+    new Vue ({
+      //el: '#app2',
+      data: {
+        name: 'かわしぃ'
+      },
+      template: '<h1>こんにちは、{{ name }}<h1>'
+    }).$mount('#app2')
+    
+    new Vue ({
+      //el: '#app2',
+      data: {
+        name: 'かわしぃ'
+      },
+      render: function(h) { //createElementはhと書くことも多い
+        return h('h1', 'こんにちは、' + this.name)
+      },
+    }).$mount('#app3')
+
+    var dir = document.createElement('div');
+    console.log(dir)
+    console.dir(dir)
+    console.log(document)
+    console.dir(document)
+
     //vm.message = '変えました'
     //vm.name = 'かわしぃ' //ボタンを押しても変わらない リアクティブにならない
   </script>
