@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  // props: ["totalNumber"], //配列でもオブジェクトでもOK
   props: ["totalNumber"],
+  // props: ["totalNumber"], //配列でもオブジェクトでもOK
   //{
   //   totalNumber: {
   //     type: Number,
@@ -25,7 +25,8 @@ export default {
   },
   methods: {
     increment () {
-      this.number += 1;
+      this.$emit("my-click", this.totalNumber + 1); //カスタムイベントはケバブケースで書く
+      // this.number += 1;
     }
   }
 };
