@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot name = "title" :user = "user" text="text">
+    <slot :user = "user" text="text">
       <!-- <h2>デフォルトのタイトル</h2> --> <!-- フォールバックコンテンツ -->
     </slot>
 
@@ -8,7 +8,7 @@
 
     <hr>
     <p>いいねの数</p>
-    <slot name = "number"></slot>
+    <slot></slot>
   </div>
 </template>
 
