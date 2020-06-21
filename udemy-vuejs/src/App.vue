@@ -4,8 +4,9 @@
 
       <h2>みなさん</h2>
 
-      <template v-slot:title> <!-- 名前付きslot -->
+      <template v-slot:title="slotProps"> <!-- 名前付きslot -->
         <h2>こんにちは</h2>
+        <h2>{{ slotProps.user.firstName }}</h2>
       </template>
 
       <h3>はじめまして</h3>
